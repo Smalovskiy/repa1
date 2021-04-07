@@ -19,7 +19,7 @@ import utils.NewHibernateUtil;
 public class Lab1 {
 
     /**
-     * @param args the command line arguments
+     * @param args the command line arguments ndnder
      */
     public static void main(String[] args) {
         Session session = NewHibernateUtil.getSessionFactory().openSession();
