@@ -29,6 +29,7 @@ public class Lab1 {
         for(Studentyi student : students){
             System.out.println(student.toString());
         }
+        //new
         System.out.println();
         HashMap map = tasks.task2();
         System.out.println(map);
