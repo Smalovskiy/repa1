@@ -6,13 +6,14 @@
 
 package lab1;
 
+import java.util.Date;
 import entity.Gruppyi;
 import entity.Studentyi;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import static org.hibernate.tool.hbm2x.StringUtils.split;
 
 /**
  *
@@ -44,7 +45,7 @@ public class Tasks {
             query = session.createQuery(sql);
             query.setParameter("param", row.getShifr());
             List<Studentyi> rows = query.list();
-            String[] words = split(row.getNazvanie(), "-");
+            String[] words = row.getNazvanie().split("-");
             if(m.containsKey(words[0])){
                 int amount = (int)m.get(words[0]);
                 m.remove(words[0]);
@@ -52,5 +53,26 @@ public class Tasks {
             } else if(words.length != 0) m.put(words[0], rows.size());
         }
         return m;
+    }
+    
+    public void task3(){
+        String sql = "from Gruppyi g";
+        Query query = session.createQuery(sql);
+        
+        List<Gruppyi> groups = query.list();
+        for(Gruppyi g : groups){
+            Date dt = new Date();
+            if(dt.getYear() - g.getDataFormir().getYear() >= 4){
+                g.setStatus("rasform");
+                g.setStatusDate(dt);
+                Set<Studentyi> studs = g.getStudentyis();
+                for(Studentyi s : studs){
+                    s.setStatus("vipusk");
+                    s.setStatusDate(dt);
+                    session.update(s);
+                }
+                session.update(g);
+            }
+        }
     }
 }

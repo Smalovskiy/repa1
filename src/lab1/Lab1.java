@@ -33,6 +33,7 @@ public class Lab1 {
         System.out.println();
         HashMap map = tasks.task2();
         System.out.println(map);
+        tasks.task3();
         session.getTransaction().commit();
     }
     

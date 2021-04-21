@@ -165,7 +165,7 @@ public class Studentyi  implements java.io.Serializable {
     
     @Override
     public String toString(){
-        return this.getFamiliya() + " " + this.getImya() + " " + this.getOtchestvo() + " " + this.getGruppyi().getNazvanie();
+        return this.getFamiliya() + " " + this.getImya() + " " + this.getOtchestvo() + " " + this.getStatus() + " " + this.getGruppyi().getNazvanie() + " group is " + this.getGruppyi().getStatus();
     }
 
 
