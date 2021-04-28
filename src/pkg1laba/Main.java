@@ -32,6 +32,7 @@ for (Gruppyi u : ups)
      {
          System.out.println(u);
      }
+
         s.close(); 
     }
     
