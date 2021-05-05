@@ -4,4 +4,5 @@
   <schema-selection match-catalog="gr"/>
   <table-filter match-name="gruppyi"/>
   <table-filter match-name="studentyi"/>
+  <table-filter match-name="specialnosti"/>
 </hibernate-reverse-engineering>

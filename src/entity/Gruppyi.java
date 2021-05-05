@@ -11,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -34,6 +36,7 @@ public class Gruppyi  implements java.io.Serializable {
      private int kodPlana;
      private String status;
      private Date statusDate;
+     private Specialnosti specialnost;
      private Set<Studentyi> studentyis = new HashSet<Studentyi>(0);
 
     public Gruppyi() {
@@ -125,8 +128,15 @@ public class Gruppyi  implements java.io.Serializable {
         this.studentyis = studentyis;
     }
 
-
-
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="IdSpecialnosti", nullable=false)
+    public Specialnosti getSpecialnost() {
+        return this.specialnost;
+    }
+    
+    public void setSpecialnost(Specialnosti specialnost) {
+        this.specialnost = specialnost;
+    }
 
 }
 
